@@ -70,19 +70,25 @@ st.markdown("""
         margin: 20px 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+    .professional-icon {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #1f77b4;
+        margin-right: 10px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-header">🧠 PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA</div>', unsafe_allow_html=True)
-st.success("🚀 Phase 4: Complete Interactive Application Deployed!")
+st.markdown('<div class="main-header">PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA</div>', unsafe_allow_html=True)
+st.success("PROFESSIONAL GRADE: Complete Interactive Application Deployed!")
 
 # Creator Information
 st.markdown("""
 <div class="creator-info">
-    <h3>📊 About the Creator</h3>
-    <p><strong>CMA. Vipin Mishra</strong> - Experienced Stock Market Professional</p>
+    <h3>ANALYTICS EXPERTISE</h3>
+    <p><strong>CMA. Vipin Mishra</strong> - Senior Stock Market Professional</p>
     <p>With <strong>18 years of extensive experience</strong> as a Stock Broker and Financial Advisor</p>
-    <p>📞 Contact: 7487937188 | 📧 Email: vipincwa85@yahoo.com</p>
+    <p>CONTACT: 7487937188 | EMAIL: vipincwa85@yahoo.com</p>
     <p>Specialized in Penny Stock Analysis and Portfolio Management</p>
 </div>
 """, unsafe_allow_html=True)
@@ -262,15 +268,15 @@ def calculate_psr_score(company_data):
 def get_risk_profile(psr_score):
     """Determine risk profile based on PSR score"""
     if psr_score >= 80:
-        return "High Growth, Low Risk", "🟢", "risk-green", "Excellent investment"
+        return "High Growth, Low Risk", "✓", "risk-green", "Excellent investment"
     elif psr_score >= 65:
-        return "Balanced Performer", "🟡", "risk-yellow", "Good risk-reward balance"
+        return "Balanced Performer", "•", "risk-yellow", "Good risk-reward balance"
     elif psr_score >= 50:
-        return "Speculative Opportunity", "🟠", "risk-orange", "High risk, high reward"
+        return "Speculative Opportunity", "▲", "risk-orange", "High risk, high reward"
     elif psr_score >= 35:
-        return "High Risk, Caution", "🔴", "risk-red", "Very risky, experienced only"
+        return "High Risk, Caution", "⚠", "risk-red", "Very risky, experienced only"
     else:
-        return "Avoid - Extreme Risk", "⚫", "risk-black", "Not recommended"
+        return "Avoid - Extreme Risk", "✗", "risk-black", "Not recommended"
 
 # PORTFOLIO TRACKING
 def initialize_portfolio():
@@ -301,16 +307,16 @@ sectors_data = create_comprehensive_data()
 initialize_portfolio()
 
 # SIDEBAR - MAIN NAVIGATION
-st.sidebar.title("🧠 PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA")
+st.sidebar.title("PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA")
 st.sidebar.markdown("---")
 
 app_mode = st.sidebar.selectbox("Navigation", [
-    "🏠 Dashboard Overview",
-    "🎯 PSR Scoring Analysis", 
-    "🔍 Advanced Stock Screener",
-    "💼 Portfolio Manager",
-    "📊 Sector Analysis",
-    "⚡ Quick Insights"
+    "DASHBOARD OVERVIEW",
+    "PSR SCORING ANALYSIS", 
+    "ADVANCED STOCK SCREENER",
+    "PORTFOLIO MANAGER",
+    "SECTOR ANALYSIS",
+    "QUICK INSIGHTS"
 ])
 
 st.sidebar.markdown("---")
@@ -326,30 +332,30 @@ st.sidebar.info("""
 # Add creator info to sidebar
 st.sidebar.markdown("---")
 st.sidebar.markdown("""
-**📊 Created by CMA. Vipin Mishra**
+**ANALYTICS BY CMA. Vipin Mishra**
 - 18+ Years Stock Market Experience
 - Certified Market Analyst
 - Stock Broker & Financial Advisor
-- 📞 7487937188
-- 📧 vipincwa85@yahoo.com
+- CONTACT: 7487937188
+- EMAIL: vipincwa85@yahoo.com
 """)
 
 # MAIN APPLICATION MODULES
-if app_mode == "🏠 Dashboard Overview":
-    st.header("📈 Executive Dashboard")
+if app_mode == "DASHBOARD OVERVIEW":
+    st.header("EXECUTIVE DASHBOARD")
     
     # Calculate all scores
     all_companies_data = []
     for sector_name, sector_data in sectors_data.items():
         for company_name, company_data in sector_data['companies'].items():
             psr_score = calculate_psr_score(company_data)
-            risk_profile, emoji, _, _ = get_risk_profile(psr_score['total_score'])
+            risk_profile, symbol, _, _ = get_risk_profile(psr_score['total_score'])
             
             all_companies_data.append({
                 'Company': company_name,
                 'Sector': sector_name,
                 'PSR Score': psr_score['total_score'],
-                'Risk Profile': f"{emoji} {risk_profile}",
+                'Risk Profile': f"{symbol} {risk_profile}",
                 'Expected Return %': company_data['expected_return'] * 100,
                 'Current Price': company_data['prices'][-1],
                 'Volatility': company_data['stats']['2022-23']['sd'],
@@ -374,7 +380,7 @@ if app_mode == "🏠 Dashboard Overview":
         st.metric("Watchlist", len(st.session_state.watchlist))
     
     # Top Performers
-    st.subheader("🏆 Top Rated Stocks")
+    st.subheader("TOP RATED STOCKS")
     top_stocks = df.nlargest(5, 'PSR Score')
     
     for _, stock in top_stocks.iterrows():
@@ -396,11 +402,11 @@ if app_mode == "🏠 Dashboard Overview":
                         hover_data=['Company', 'Sector', 'Volatility'],
                         title='Risk-Return Analysis',
                         color_discrete_map={
-                            '🟢 High Growth, Low Risk': 'green',
-                            '🟡 Balanced Performer': 'yellow', 
-                            '🟠 Speculative Opportunity': 'orange',
-                            '🔴 High Risk, Caution': 'red',
-                            '⚫ Avoid - Extreme Risk': 'black'
+                            '✓ High Growth, Low Risk': 'green',
+                            '• Balanced Performer': 'yellow', 
+                            '▲ Speculative Opportunity': 'orange',
+                            '⚠ High Risk, Caution': 'red',
+                            '✗ Avoid - Extreme Risk': 'black'
                         })
         st.plotly_chart(fig, use_container_width=True)
     
@@ -418,8 +424,8 @@ if app_mode == "🏠 Dashboard Overview":
         fig2.update_layout(xaxis_tickangle=-45)
         st.plotly_chart(fig2, use_container_width=True)
 
-elif app_mode == "🎯 PSR Scoring Analysis":
-    st.header("🎯 Intelligent Stock Analysis")
+elif app_mode == "PSR SCORING ANALYSIS":
+    st.header("INTELLIGENT STOCK ANALYSIS")
     
     col1, col2 = st.columns([1, 2])
     
@@ -431,14 +437,14 @@ elif app_mode == "🎯 PSR Scoring Analysis":
         if company:
             company_data = sectors_data[sector]['companies'][company]
             psr_score = calculate_psr_score(company_data)
-            risk_profile, emoji, risk_class, risk_desc = get_risk_profile(psr_score['total_score'])
+            risk_profile, symbol, risk_class, risk_desc = get_risk_profile(psr_score['total_score'])
             
             # PSR Score Card
             st.markdown(f"""
             <div class="score-card">
-                <h3>PSR Score</h3>
+                <h3>PSR SCORE</h3>
                 <h1 style="font-size: 4rem; margin: 0;">{psr_score['total_score']}/100</h1>
-                <h4>{emoji} {risk_profile}</h4>
+                <h4>{symbol} {risk_profile}</h4>
                 <p>{risk_desc}</p>
             </div>
             """, unsafe_allow_html=True)
@@ -446,16 +452,16 @@ elif app_mode == "🎯 PSR Scoring Analysis":
             # Action Buttons
             col1a, col1b = st.columns(2)
             with col1a:
-                if st.button("📈 Add to Portfolio", use_container_width=True):
+                if st.button("ADD TO PORTFOLIO", use_container_width=True):
                     add_to_portfolio(company, sector, 100, company_data['prices'][-1])
                     st.success(f"Added {company} to portfolio!")
             with col1b:
-                if st.button("👀 Add to Watchlist", use_container_width=True):
+                if st.button("ADD TO WATCHLIST", use_container_width=True):
                     add_to_watchlist(company, sector)
                     st.success(f"Added {company} to watchlist!")
             
             # Quick Stats
-            st.subheader("📊 Key Metrics")
+            st.subheader("KEY METRICS")
             st.metric("Current Price", f"₹{company_data['prices'][-1]:.2f}")
             st.metric("Expected Return", f"{company_data['expected_return']*100:.1f}%")
             st.metric("Volatility (SD)", f"₹{company_data['stats']['2022-23']['sd']:.2f}")
@@ -498,18 +504,18 @@ elif app_mode == "🎯 PSR Scoring Analysis":
             st.plotly_chart(fig2, use_container_width=True)
             
             # Detailed Analysis
-            st.subheader("🔍 Detailed Analysis")
+            st.subheader("DETAILED ANALYSIS")
             st.markdown(f"""
             <div class="metric-card">
-                <h4>Investment Thesis</h4>
+                <h4>INVESTMENT THESIS</h4>
                 <p>{company_data['interpretation']}</p>
                 <p><strong>Sector:</strong> {sector} | <strong>Beta:</strong> {company_data.get('beta', 'N/A')} | 
                 <strong>Sharpe Ratio:</strong> {company_data.get('sharpe_ratio', 'N/A')}</p>
             </div>
             """, unsafe_allow_html=True)
 
-elif app_mode == "🔍 Advanced Stock Screener":
-    st.header("🔍 Advanced Stock Screening")
+elif app_mode == "ADVANCED STOCK SCREENER":
+    st.header("ADVANCED STOCK SCREENING")
     
     # Screening Filters
     col1, col2, col3 = st.columns(3)
@@ -525,7 +531,7 @@ elif app_mode == "🔍 Advanced Stock Screener":
         market_cap_min = st.number_input("Min Market Cap (Cr)", 0, 5000, 100)
     
     # Screening Results
-    st.subheader("📊 Screening Results")
+    st.subheader("SCREENING RESULTS")
     
     results = []
     for sector in sector_filter:
@@ -539,14 +545,14 @@ elif app_mode == "🔍 Advanced Stock Screener":
                 latest_sd <= max_volatility and
                 market_cap >= market_cap_min):
                 
-                risk_cat, emoji, _, _ = get_risk_profile(psr_score['total_score'])
+                risk_cat, symbol, _, _ = get_risk_profile(psr_score['total_score'])
                 
                 if risk_filter == "All" or risk_cat.startswith(risk_filter):
                     results.append({
                         'Company': company,
                         'Sector': sector,
                         'PSR Score': psr_score['total_score'],
-                        'Risk Profile': f"{emoji} {risk_cat}",
+                        'Risk Profile': f"{symbol} {risk_cat}",
                         'Expected Return %': data['expected_return'] * 100,
                         'Current Price': data['prices'][-1],
                         'Volatility': latest_sd,
@@ -562,7 +568,7 @@ elif app_mode == "🔍 Advanced Stock Screener":
         # Export Results
         csv = results_df.to_csv(index=False)
         st.download_button(
-            label="📥 Export Results as CSV",
+            label="EXPORT RESULTS AS CSV",
             data=csv,
             file_name=f"stock_screening_results_{datetime.now().strftime('%Y%m%d')}.csv",
             mime="text/csv",
@@ -571,13 +577,13 @@ elif app_mode == "🔍 Advanced Stock Screener":
     else:
         st.warning("No stocks match your criteria. Try adjusting filters.")
 
-elif app_mode == "💼 Portfolio Manager":
-    st.header("💼 Portfolio Management")
+elif app_mode == "PORTFOLIO MANAGER":
+    st.header("PORTFOLIO MANAGEMENT")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("Your Portfolio")
+        st.subheader("YOUR PORTFOLIO")
         if st.session_state.portfolio:
             portfolio_df = pd.DataFrame(st.session_state.portfolio)
             st.dataframe(portfolio_df, use_container_width=True)
@@ -589,7 +595,7 @@ elif app_mode == "💼 Portfolio Manager":
             st.info("Your portfolio is empty. Add stocks from the PSR Analysis page.")
     
     with col2:
-        st.subheader("Watchlist")
+        st.subheader("WATCHLIST")
         if st.session_state.watchlist:
             watchlist_df = pd.DataFrame(st.session_state.watchlist)
             st.dataframe(watchlist_df, use_container_width=True)
@@ -598,7 +604,7 @@ elif app_mode == "💼 Portfolio Manager":
     
     # Portfolio Analytics
     if st.session_state.portfolio:
-        st.subheader("📈 Portfolio Analytics")
+        st.subheader("PORTFOLIO ANALYTICS")
         
         # Sector Distribution
         sector_dist = {}
@@ -612,8 +618,8 @@ elif app_mode == "💼 Portfolio Manager":
                         title="Portfolio Sector Distribution")
             st.plotly_chart(fig, use_container_width=True)
 
-elif app_mode == "📊 Sector Analysis":
-    st.header("📊 Comprehensive Sector Analysis")
+elif app_mode == "SECTOR ANALYSIS":
+    st.header("COMPREHENSIVE SECTOR ANALYSIS")
     
     selected_sector = st.selectbox("Choose Sector for Deep Analysis", list(sectors_data.keys()))
     
@@ -621,7 +627,7 @@ elif app_mode == "📊 Sector Analysis":
         sector_data = sectors_data[selected_sector]
         
         # Sector Overview
-        st.subheader(f"Sector Overview: {selected_sector}")
+        st.subheader(f"SECTOR OVERVIEW: {selected_sector}")
         
         companies_data = []
         for company_name, company_data in sector_data['companies'].items():
@@ -650,7 +656,7 @@ elif app_mode == "📊 Sector Analysis":
             st.plotly_chart(fig, use_container_width=True)
         
         # Sector Performance Trends
-        st.subheader("📈 Sector Performance Trends")
+        st.subheader("SECTOR PERFORMANCE TRENDS")
         
         # Calculate sector averages over years
         years = ['2018-19', '2019-20', '2020-21', '2021-22', '2022-23']
@@ -664,8 +670,8 @@ elif app_mode == "📊 Sector Analysis":
                      labels={'x': 'Year', 'y': 'Average Price (₹)'})
         st.plotly_chart(fig, use_container_width=True)
 
-elif app_mode == "⚡ Quick Insights":
-    st.header("⚡ Quick Insights & Alerts")
+elif app_mode == "QUICK INSIGHTS":
+    st.header("QUICK INSIGHTS & ALERTS")
     
     # Generate insights
     all_companies = []
@@ -686,7 +692,7 @@ elif app_mode == "⚡ Quick Insights":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.subheader("🚀 Top Opportunities")
+        st.subheader("TOP OPPORTUNITIES")
         top_opportunities = insights_df.nlargest(3, 'Expected Return %')
         for _, opp in top_opportunities.iterrows():
             st.markdown(f"""
@@ -698,7 +704,7 @@ elif app_mode == "⚡ Quick Insights":
             """, unsafe_allow_html=True)
     
     with col2:
-        st.subheader("🛡️ Safest Bets")
+        st.subheader("SAFEST BETS")
         safe_bets = insights_df[insights_df['PSR Score'] >= 75].nlargest(3, 'PSR Score')
         for _, safe in safe_bets.iterrows():
             st.markdown(f"""
@@ -710,7 +716,7 @@ elif app_mode == "⚡ Quick Insights":
             """, unsafe_allow_html=True)
     
     with col3:
-        st.subheader("⚠️ High Risk Alerts")
+        st.subheader("HIGH RISK ALERTS")
         high_risk = insights_df[insights_df['PSR Score'] < 40].nsmallest(3, 'PSR Score')
         for _, risk in high_risk.iterrows():
             st.markdown(f"""
@@ -725,13 +731,13 @@ elif app_mode == "⚡ Quick Insights":
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center;">
-    <h3>🎉 PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA - Complete Professional Platform</h3>
+    <h3>PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA - Complete Professional Platform</h3>
     <p><strong>Professional Grade Stock Analysis Tool</strong> • Built on BSE Micro-cap Research • Multi-dimensional Scoring</p>
-    <p>📊 Advanced Analytics | 🎯 Intelligent Scoring | 🔍 Professional Screening | 💼 Portfolio Management</p>
+    <p>ADVANCED ANALYTICS | INTELLIGENT SCORING | PROFESSIONAL SCREENING | PORTFOLIO MANAGEMENT</p>
     <br>
-    <h4>📊 About CMA. Vipin Mishra</h4>
+    <h4>ANALYTICS EXPERTISE</h4>
     <p><strong>18+ Years of Stock Market Experience</strong> | Certified Market Analyst | Stock Broker & Financial Advisor</p>
-    <p>📞 Contact: 7487937188 | 📧 Email: vipincwa85@yahoo.com</p>
+    <p>CONTACT: 7487937188 | EMAIL: vipincwa85@yahoo.com</p>
     <p>Specialized in Penny Stock Analysis, Portfolio Management, and Financial Advisory Services</p>
 </div>
 """, unsafe_allow_html=True)
