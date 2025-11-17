@@ -8,7 +8,7 @@ import io
 
 # Complete professional application
 st.set_page_config(
-    page_title="PennyStock Profiler AI",
+    page_title="PennyStock analysis by CMA.VIPIN MISHRA",
     page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -64,8 +64,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-header">🧠 PennyStock Profiler AI</div>', unsafe_allow_html=True)
-st.success("🚀 Phase 4: Complete Interactive Application Deployed!")
+st.markdown('<div class="main-header"> PennyStock analysis by CMA.VIPIN MISHRA </div>', unsafe_allow_html=True)
+st.success(" Lets Start....")
 
 # COMPREHENSIVE DATA STRUCTURE
 def create_comprehensive_data():
