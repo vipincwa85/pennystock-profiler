@@ -281,16 +281,16 @@ sectors_data = create_comprehensive_data()
 initialize_portfolio()
 
 # SIDEBAR - MAIN NAVIGATION
-st.sidebar.title("🧠 PennyStock Profiler AI")
+st.sidebar.title("PennyStock Profiler by CMA.VIPIN MISHRA")
 st.sidebar.markdown("---")
 
 app_mode = st.sidebar.selectbox("Navigation", [
-    "🏠 Dashboard Overview",
-    "🎯 PSR Scoring Analysis", 
-    "🔍 Advanced Stock Screener",
-    "💼 Portfolio Manager",
-    "📊 Sector Analysis",
-    "⚡ Quick Insights"
+    " Dashboard Overview",
+    " PSR Scoring Analysis", 
+    " Advanced Stock Screener",
+    " Portfolio Manager",
+    " Sector Analysis",
+    " Quick Insights"
 ])
 
 st.sidebar.markdown("---")
@@ -343,7 +343,7 @@ if app_mode == "🏠 Dashboard Overview":
         st.metric("Watchlist", len(st.session_state.watchlist))
     
     # Top Performers
-    st.subheader("🏆 Top Rated Stocks")
+    st.subheader(" Top Rated Stocks")
     top_stocks = df.nlargest(5, 'PSR Score')
     
     for _, stock in top_stocks.iterrows():
@@ -387,8 +387,8 @@ if app_mode == "🏠 Dashboard Overview":
         fig2.update_layout(xaxis_tickangle=-45)
         st.plotly_chart(fig2, use_container_width=True)
 
-elif app_mode == "🎯 PSR Scoring Analysis":
-    st.header("🎯 Intelligent Stock Analysis")
+elif app_mode == " PSR Scoring Analysis":
+    st.header(" Intelligent Stock Analysis")
     
     col1, col2 = st.columns([1, 2])
     
@@ -540,8 +540,8 @@ elif app_mode == "🔍 Advanced Stock Screener":
     else:
         st.warning("No stocks match your criteria. Try adjusting filters.")
 
-elif app_mode == "💼 Portfolio Manager":
-    st.header("💼 Portfolio Management")
+elif app_mode == " Portfolio Manager":
+    st.header(" Portfolio Management")
     
     col1, col2 = st.columns(2)
     
@@ -633,8 +633,8 @@ elif app_mode == "📊 Sector Analysis":
                      labels={'x': 'Year', 'y': 'Average Price (₹)'})
         st.plotly_chart(fig, use_container_width=True)
 
-elif app_mode == "⚡ Quick Insights":
-    st.header("⚡ Quick Insights & Alerts")
+elif app_mode == " Quick Insights":
+    st.header(" Quick Insights & Alerts")
     
     # Generate insights
     all_companies = []
@@ -655,7 +655,7 @@ elif app_mode == "⚡ Quick Insights":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.subheader("🚀 Top Opportunities")
+        st.subheader(" Top Opportunities")
         top_opportunities = insights_df.nlargest(3, 'Expected Return %')
         for _, opp in top_opportunities.iterrows():
             st.markdown(f"""
@@ -667,7 +667,7 @@ elif app_mode == "⚡ Quick Insights":
             """, unsafe_allow_html=True)
     
     with col2:
-        st.subheader("🛡️ Safest Bets")
+        st.subheader(" Safest Bets")
         safe_bets = insights_df[insights_df['PSR Score'] >= 75].nlargest(3, 'PSR Score')
         for _, safe in safe_bets.iterrows():
             st.markdown(f"""
@@ -694,8 +694,8 @@ elif app_mode == "⚡ Quick Insights":
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center;">
-    <h3>🎉 PennyStock Profiler AI - Complete Professional Platform</h3>
+    <h3> PennyStock Profiler AI - Complete Professional Platform</h3>
     <p><strong>Professional Grade Stock Analysis Tool</strong> • Built on BSE Micro-cap Research • Multi-dimensional Scoring</p>
-    <p>📊 Advanced Analytics | 🎯 Intelligent Scoring | 🔍 Professional Screening | 💼 Portfolio Management</p>
+    <p> Advanced Analytics |  Intelligent Scoring |  Professional Screening |  Portfolio Management</p>
 </div>
 """, unsafe_allow_html=True)
