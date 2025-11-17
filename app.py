@@ -8,7 +8,7 @@ import io
 
 # Complete professional application
 st.set_page_config(
-    page_title="PennyStock Profiler by CMA.VIPIN MISHRA",
+    page_title="PennyStock Profiler AI",
     page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -281,16 +281,16 @@ sectors_data = create_comprehensive_data()
 initialize_portfolio()
 
 # SIDEBAR - MAIN NAVIGATION
-st.sidebar.title(" PennyStock Profiler by CMA.VIPIN MISHRA")
+st.sidebar.title("🧠 PennyStock Profiler AI")
 st.sidebar.markdown("---")
 
 app_mode = st.sidebar.selectbox("Navigation", [
-    " Dashboard Overview",
-    " PSR Scoring Analysis", 
-    " Advanced Stock Screener",
-    " Portfolio Manager",
-    " Sector Analysis",
-    " Quick Insights"
+    "🏠 Dashboard Overview",
+    "🎯 PSR Scoring Analysis", 
+    "🔍 Advanced Stock Screener",
+    "💼 Portfolio Manager",
+    "📊 Sector Analysis",
+    "⚡ Quick Insights"
 ])
 
 st.sidebar.markdown("---")
