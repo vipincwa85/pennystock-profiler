@@ -8,7 +8,7 @@ import io
 
 # Complete professional application
 st.set_page_config(
-    page_title="PennyStock Profiler AI",
+    page_title="PennyStock Analysis by CMA.Vipin Mishra",
     page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -61,11 +61,31 @@ st.markdown("""
         border: 1px solid #e9ecef;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
+    .creator-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 25px;
+        color: white;
+        text-align: center;
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-header">🧠 PennyStock Profiler AI</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">🧠 PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA</div>', unsafe_allow_html=True)
 st.success("🚀 Phase 4: Complete Interactive Application Deployed!")
+
+# Creator Information
+st.markdown("""
+<div class="creator-info">
+    <h3>📊 About the Creator</h3>
+    <p><strong>CMA. Vipin Mishra</strong> - Experienced Stock Market Professional</p>
+    <p>With <strong>18 years of extensive experience</strong> as a Stock Broker and Financial Advisor</p>
+    <p>📞 Contact: 7487937188 | 📧 Email: vipincwa85@yahoo.com</p>
+    <p>Specialized in Penny Stock Analysis and Portfolio Management</p>
+</div>
+""", unsafe_allow_html=True)
 
 # COMPREHENSIVE DATA STRUCTURE
 def create_comprehensive_data():
@@ -281,7 +301,7 @@ sectors_data = create_comprehensive_data()
 initialize_portfolio()
 
 # SIDEBAR - MAIN NAVIGATION
-st.sidebar.title("🧠 PennyStock Profiler AI")
+st.sidebar.title("🧠 PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA")
 st.sidebar.markdown("---")
 
 app_mode = st.sidebar.selectbox("Navigation", [
@@ -301,6 +321,17 @@ st.sidebar.info("""
 - Portfolio Management
 - Sector Analysis
 - Export Capabilities
+""")
+
+# Add creator info to sidebar
+st.sidebar.markdown("---")
+st.sidebar.markdown("""
+**📊 Created by CMA. Vipin Mishra**
+- 18+ Years Stock Market Experience
+- Certified Market Analyst
+- Stock Broker & Financial Advisor
+- 📞 7487937188
+- 📧 vipincwa85@yahoo.com
 """)
 
 # MAIN APPLICATION MODULES
@@ -694,8 +725,13 @@ elif app_mode == "⚡ Quick Insights":
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center;">
-    <h3>🎉 PennyStock Profiler AI - Complete Professional Platform</h3>
+    <h3>🎉 PENNYSTOCK ANALYSIS BY CMA.VIPIN MISHRA - Complete Professional Platform</h3>
     <p><strong>Professional Grade Stock Analysis Tool</strong> • Built on BSE Micro-cap Research • Multi-dimensional Scoring</p>
     <p>📊 Advanced Analytics | 🎯 Intelligent Scoring | 🔍 Professional Screening | 💼 Portfolio Management</p>
+    <br>
+    <h4>📊 About CMA. Vipin Mishra</h4>
+    <p><strong>18+ Years of Stock Market Experience</strong> | Certified Market Analyst | Stock Broker & Financial Advisor</p>
+    <p>📞 Contact: 7487937188 | 📧 Email: vipincwa85@yahoo.com</p>
+    <p>Specialized in Penny Stock Analysis, Portfolio Management, and Financial Advisory Services</p>
 </div>
 """, unsafe_allow_html=True)
